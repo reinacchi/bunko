@@ -1,0 +1,11 @@
+[package]
+name = "bunko"
+description = "bunko is a lightweight, flexible, high-performance Rust library for data compression and decompression."
+version = "0.1.0"
+edition = "2021"
+homepage = "https://github.com/reinacchi/bunko"
+keywords = ["compression", "decompression", "bunko", "zlib", "deflate", "gzip"]
+license = "MIT"
+
+[dependencies]
+flate2 = { version = "1.0", features = ["zlib"] }
