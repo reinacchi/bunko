@@ -43,6 +43,27 @@ fn main() {
 }
 ```
 
+### Example: Streaming Compression with Buffers
+```rs
+use bunko::{calculate_compression_ratio, compress_with_buffer, BunkoError, CompressionFormat, CompressionLevel};
+
+fn main() -> Result<(), BunkoError> {
+    let input = b"Hello, this is a test for buffer streaming!".repeat(1000);
+    let compressed = compress_with_buffer(
+        &input,
+        CompressionFormat::Deflate,
+        CompressionLevel::Best,
+        1024, // Buffer size
+    )?;
+    let ratio = calculate_compression_ratio(input.len(), compressed.len());
+    println!("Uncompressed size: {} bytes", input.len());
+    println!("Compression size: {} bytes", compressed.len());
+    println!("Compression ratio: {:.2}%", ratio * 100.0);
+
+    Ok(())
+}
+```
+
 ## License
 
 This library is licensed under [MIT](https://github.com/reinacchi/bunko/blob/master/LICENSE).
